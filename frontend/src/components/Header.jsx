@@ -1,12 +1,36 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState } from "react";
 import { useEffect } from "react";
+
 import logo from "../assets/icons/logo.png";
 function Header() {
-  const Register = () => {
+  const [TableValue, setTableValue] = useState([{}]);
 
-  }
+  const fnInfo = async () => {
+    try {
+      const response = await fetch(
+        "http://requets",
+        {
+          method: "POST",
+          body: JSON.stringify({}),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      setTableValue(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   
+  useEffect(() => {
+    fnInfo();
+    console.log("planning");
+  }, []);
   return (
     <>
       <nav className="navbar is-black">
