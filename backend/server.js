@@ -12,6 +12,10 @@ const client = new MongoClient(uri, {
   }
 });
 
+/**
+ * Runs the server and connects to MongoDB.
+ * @returns {Promise<void>} A promise that resolves when the server is running and connected to MongoDB.
+ */
 async function run() {
   try {
     await client.connect();
